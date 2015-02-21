@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Char Replacer</title>
+    <style type="text/css">
+        input {
+            width:250px;
+        }
+        code {
+		    font-family: Consolas, Monaco, Courier New, Courier, monospace;
+		    font-size: 12px;
+		    background-color: #f9f9f9;
+		    border: 1px solid #D0D0D0;
+		    color: #002166;
+		    display: block;
+		    margin: 14px 0 14px 0;
+		    padding: 12px 10px 12px 10px;
+            line-break:strict;
+	    }
+        pre {
+            margin:0px 0px 0px 40px;
+            padding:0px;
+        }
+    </style>
+    <script src="jquery-1.9.1.js"></script>
+    <script src="jquery.charReplacer.js"></script>
+    <script>
+        $(function () {
+            $("#Text1").charReplacer(); //  replaces spaces with - 
+            $("#Text2").charReplacer({ replaceWith: '$' });   //  replaces spaces with $       
+            $("#Text3").charReplacer({ replaceChar: '&', replaceWith: 'and' }); //  replaces & with and; 
+            $("#Text4").charReplacer({ replaceChar: '\'', replaceWith: '\"' }); //  replaces ' with "; 
+            $("#Text5").charReplacer({ replaceChar: ["<", ">", '\n'], replaceWith: ["&lt;", "&gt;", " &lt;br&gt; "] });   //  replaces array with array   
+            $("input[char-replace='true']").charReplacer();
+        });
+    </script>
+</head>
+<body>
+    <h2>Character Replacer :</h2>
+    <input type="text" id="Text1" placeholder="replace space with -"/>
+    <code>
+        <pre>
+        //Default Behaviour
+        $(function () {
+            $("#Text1").charReplacer();
+        })
+        </pre>
+    </code>
+    <input type="text" id="Text2" placeholder="replace space with $"/>
+    <code>
+        <pre>
+        $(function () {
+            $("#Text2").charReplacer({ replaceWith: '$' });
+        })
+        </pre>
+    </code>
+    <input type="text" id="Text3" placeholder="replace & with and"/>
+    <code>
+        <pre>
+        $(function () {
+           $("#Text3").charReplacer({ replaceChar: '&', replaceWith: 'and' });
+        })
+        </pre>
+    </code>
+    <input type="text" id="Text4" placeholder="replace ' with '' "/>
+    <code>
+        <pre>
+        $(function () {
+           $("#Text4").charReplacer({ replaceChar: '\'', replaceWith: '\"' });
+        })
+        </pre>
+    </code>
+    <textarea style="width: 620px; height: 144px;" id="Text5" placeholder="['<', '>','\n'] -> ['&amp;lt;', '&amp;gt;', '<br/>']"></textarea>
+    <code>
+        <pre>
+        $(function () {
+            $("#Text5").charReplacer({ replaceChar: ["<", ">", "\n"], replaceWith: ["&amp;lt;", "&amp;gt;", "&lt;br&gt;"] });
+        })
+        </pre>
+    </code>
+    <input type="text" placeholder="replace space with -" char-replace="true"/> <input type="text" placeholder="replace space with -" char-replace="true"/> <input type="text" placeholder="replace space with -" char-replace="true"/> <input placeholder="replace space with -" type="text" char-replace="true"/>
+    <code>
+        <pre>
+        // mutiple fields
+        //html
+        &lt;input type=&#39;text&#39; char-replace=&#39;true&#39; /&gt;
+        &lt;input type=&#39;text&#39; char-replace=&#39;true&#39; /&gt;    
+        &lt;input type=&#39;text&#39; char-replace=&#39;true&#39; /&gt;
+        &lt;input type=&#39;text&#39; char-replace=&#39;true&#39; /&gt;
+        // javascript
+        $(function () {
+           $("input[char-replace='true']").charReplacer();
+           //or
+           //$("input[char-replace='true']").charReplacer({ replaceChar:&quot; &quot;, replaceWith:&quot;-&quot; });
+        })
+        </pre>
+    </code>
+</body>
+</html>
